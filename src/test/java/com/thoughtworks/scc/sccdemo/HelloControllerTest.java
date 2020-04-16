@@ -8,7 +8,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.cloud.contract.spec.internal.HttpStatus;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static io.restassured.module.mockmvc.RestAssuredMockMvc.given;
@@ -31,7 +30,7 @@ public class HelloControllerTest {
                 .when()
                 .get("/hello");
 
-        Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
+        Assert.assertEquals(200, response.getStatusCode());
         
         String helloWorld = response.getBody().asString();
         Assert.assertEquals("hello world!", helloWorld);

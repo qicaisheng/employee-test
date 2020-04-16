@@ -10,7 +10,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.cloud.contract.spec.internal.HttpStatus;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.lang.reflect.Type;
@@ -36,7 +35,7 @@ public class EmployeeControllerTest {
                 .when()
                 .get("/employees/1");
 
-        Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
+        Assert.assertEquals(200, response.getStatusCode());
         
         Employee employee = response.getBody().as(Employee.class);
         Assert.assertEquals(1, employee.getId());
@@ -50,7 +49,7 @@ public class EmployeeControllerTest {
                 .when()
                 .get("/employees");
 
-        Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
+        Assert.assertEquals(200, response.getStatusCode());
 
         List<Employee> employees = response.getBody().as(new TypeRef<List<Employee>>() {
             @Override
@@ -71,7 +70,7 @@ public class EmployeeControllerTest {
                 .when()
                 .post("/employees");
 
-        Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
+        Assert.assertEquals(200, response.getStatusCode());
 
         List<Employee> employees = response.getBody().as(new TypeRef<List<Employee>>() {
             @Override
